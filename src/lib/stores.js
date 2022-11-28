@@ -3,30 +3,31 @@ import { writable } from "svelte/store";
 function manageLists() {
 	const { subscribe, set, update } = writable([
 		{
-			id: 1,
+			name: "List One",
 			task: [
 				{ value: "item 1", isChecked: true },
 				{ value: "item 2", isChecked: false },
 			],
 		},
 		{
-			id: 2,
+			name: "List Two",
 			task: [
-				{ value: "item 1", isChecked: true },
-				{ value: "item 2", isChecked: true },
+				{ value: "item 1d", isChecked: true },
+				{ value: "item 2d", isChecked: true },
 			],
 		},
 	]);
 
 	return {
 		subscribe,
-		addList: (list) => update((lists) => [...lists, list]),
+		addList: (listName) =>
+			update((lists) => [...lists, { name: listName, task: [] }]),
 		removeList: (list) =>
 			update((lists) => [...lists.filter((l) => l !== list)]),
-		addTask: (listID, task) =>
+		addTask: (listIndex, task) =>
 			update((lists) =>
-				lists.map((list) =>
-					list.id === listID
+				lists.map((list, i) =>
+					i === listIndex
 						? {
 								...list,
 								task: [
@@ -37,10 +38,10 @@ function manageLists() {
 						: list
 				)
 			),
-		removeTask: (listID, taskID) =>
+		removeTask: (listIndex, taskID) =>
 			update((lists) =>
-				lists.map((list) =>
-					list.id === listID
+				lists.map((list, i) =>
+					i === listIndex
 						? {
 								...list,
 								task: list.task.filter(
@@ -50,10 +51,10 @@ function manageLists() {
 						: list
 				)
 			),
-		updateCheckedState: (listID, taskIndex, checkedValue) =>
+		updateCheckedState: (listIndex, taskIndex, checkedValue) =>
 			update((lists) =>
-				lists.map((list) =>
-					list.id === listID
+				lists.map((list, i) =>
+					i === listIndex
 						? {
 								...list,
 								task: list.task.map((task, index) =>
@@ -72,6 +73,8 @@ function manageLists() {
 }
 
 export const lists = manageLists();
+
+export const selectedListIndex = writable(1);
 
 // export const lists = writable([
 // 	[{ id: 1, value: "List 1", checked: true }],
