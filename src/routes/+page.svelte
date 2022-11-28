@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import List from "../lib/list/list.svelte";
+    import {lists} from "../lib/stores.js";
+
+
+</script>
+<div>
+    {#each $lists as list}
+        <List list={list}/>
+    {/each}
+</div>
