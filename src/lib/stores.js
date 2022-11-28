@@ -4,11 +4,17 @@ function manageLists() {
 	const { subscribe, set, update } = writable([
 		{
 			id: 1,
-			task: [{ value: "item 1" }, { value: "item 2" }],
+			task: [
+				{ value: "item 1", isChecked: true },
+				{ value: "item 2", isChecked: false },
+			],
 		},
 		{
 			id: 2,
-			task: [{ value: "item 1" }, { value: "item 2" }],
+			task: [
+				{ value: "item 1", isChecked: true },
+				{ value: "item 2", isChecked: true },
+			],
 		},
 	]);
 
@@ -27,6 +33,37 @@ function manageLists() {
 									...list.task,
 									{ value: task, checked: false },
 								],
+						  }
+						: list
+				)
+			),
+		removeTask: (listID, taskID) =>
+			update((lists) =>
+				lists.map((list) =>
+					list.id === listID
+						? {
+								...list,
+								task: list.task.filter(
+									(task, index) => index !== taskID
+								),
+						  }
+						: list
+				)
+			),
+		updateCheckedState: (listID, taskIndex, checkedValue) =>
+			update((lists) =>
+				lists.map((list) =>
+					list.id === listID
+						? {
+								...list,
+								task: list.task.map((task, index) =>
+									index === taskIndex
+										? {
+												...task,
+												isChecked: checkedValue,
+										  }
+										: task
+								),
 						  }
 						: list
 				)
