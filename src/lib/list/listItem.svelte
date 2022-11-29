@@ -1,4 +1,5 @@
 <script>
+	import GoTrashcan from "svelte-icons/go/GoTrashcan.svelte";
 	import { lists } from "../stores.js";
 
 	export let value;
@@ -37,19 +38,31 @@
 	on:drop|preventDefault={(e) => onDrop(e, taskIndex)}
 	on:focus={null}
 	on:blur={null}
-	class={`flex flex-row border-2 border-black my-1 px-2 ${
-		hoverIndex === taskIndex ? "bg-gray-500" : ""
-	}`}
+	class={`flex flex-row  my-2 px-2 py-2 bg-secondary-background rounded-md
+	${hoverIndex === taskIndex ? "bg-gray-500" : ""}`}
 	draggable="true"
 >
-	<input type="checkbox" checked={isChecked} on:click={changeCheckedState} />
+	<div class="flex w-full cursor-pointer">
+		<input
+			type="checkbox"
+			checked={isChecked}
+			on:click={changeCheckedState}
+			class="w-4"
+		/>
 
-	<div class="">{value}</div>
+		<div
+			class={`text-white text-lg font-thin ml-2 dash 
+		${isChecked ? "line-through" : ""} `}
+		>
+			{value}
+		</div>
+	</div>
 	<button
 		on:click={removeItem}
 		on:mouseover={handleMouseOver}
 		on:mouseout={handleMouseOut}
 		on:focus={null}
-		on:blur={null}>Remove</button
+		on:blur={null}
+		class="w-4 text-gray-500"><GoTrashcan /></button
 	>
 </div>
