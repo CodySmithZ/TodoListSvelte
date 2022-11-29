@@ -1,5 +1,5 @@
 <script>
-	import { lists, selectedListIndex } from "./stores.js";
+	import { lists, selectedListIndex } from "../stores.js";
 
 	let listName = "";
 

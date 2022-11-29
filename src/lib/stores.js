@@ -22,8 +22,8 @@ function manageLists() {
 		subscribe,
 		addList: (listName) =>
 			update((lists) => [...lists, { name: listName, task: [] }]),
-		removeList: (list) =>
-			update((lists) => [...lists.filter((l) => l !== list)]),
+		removeList: (listIndex) =>
+			update((lists) => lists.filter((list, i) => i !== listIndex)),
 		addTask: (listIndex, task) =>
 			update((lists) =>
 				lists.map((list, i) =>
@@ -67,6 +67,12 @@ function manageLists() {
 								),
 						  }
 						: list
+				)
+			),
+		updateListName: (listIndex, updatedListName) =>
+			update((lists) =>
+				lists.map((list, i) =>
+					i === listIndex ? { ...list, name: updatedListName } : list
 				)
 			),
 	};

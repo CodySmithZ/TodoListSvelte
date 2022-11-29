@@ -1,5 +1,6 @@
 <script>
 	import { lists, selectedListIndex } from "../stores.js";
+	import ListMenu from "../listmenu/listsMenu.svelte";
 
 	const changeSelectedList = (listIndex) => {
 		console.log(listIndex);
@@ -15,5 +16,6 @@
 		on:click={() => changeSelectedList(i)}
 	>
 		{list.name}
+		<ListMenu listIndex={i} />
 	</div>
 {/each}
