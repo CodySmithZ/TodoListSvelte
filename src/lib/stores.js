@@ -1,19 +1,24 @@
 import { writable } from "svelte/store";
 
+const findNextID = (tasks) => {
+	const taskIDs = tasks.map((task) => task.id);
+	return Math.max(...taskIDs) + 1;
+};
+
 function manageLists() {
 	const { subscribe, set, update } = writable([
 		{
 			name: "List One",
 			task: [
-				{ value: "item 1", isChecked: true },
-				{ value: "item 2", isChecked: false },
+				{ id: 1, value: "item 1", isChecked: true },
+				{ id: 2, value: "item 2", isChecked: false },
 			],
 		},
 		{
 			name: "List Two",
 			task: [
-				{ value: "item 1d", isChecked: true },
-				{ value: "item 2d", isChecked: true },
+				{ id: 1, value: "item 1d", isChecked: true },
+				{ id: 2, value: "item 2d", isChecked: true },
 			],
 		},
 	]);
@@ -32,7 +37,11 @@ function manageLists() {
 								...list,
 								task: [
 									...list.task,
-									{ value: task, checked: false },
+									{
+										id: findNextID([...list.task]),
+										value: task,
+										checked: false,
+									},
 								],
 						  }
 						: list
@@ -74,6 +83,30 @@ function manageLists() {
 				lists.map((list, i) =>
 					i === listIndex ? { ...list, name: updatedListName } : list
 				)
+			),
+		moveTask: (listIndex, taskIndex, targetIndex) =>
+			update((lists) =>
+				lists.map((list, i) => {
+					if (i === listIndex) {
+						//Get task to move
+						const tasktoMove = list.task[taskIndex];
+
+						//Remove task from list
+						const updatedTaskList = list.task.filter(
+							(task) => task !== tasktoMove
+						);
+
+						//Insert task at target index
+						updatedTaskList.splice(targetIndex, 0, tasktoMove);
+
+						return {
+							...list,
+							task: updatedTaskList,
+						};
+					} else {
+						return list;
+					}
+				})
 			),
 	};
 }
