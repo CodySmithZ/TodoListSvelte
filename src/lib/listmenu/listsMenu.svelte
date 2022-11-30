@@ -1,5 +1,7 @@
 <script>
 	import MdMoreHoriz from "svelte-icons/md/MdMoreHoriz.svelte";
+	import FaRegEdit from "svelte-icons/fa/FaRegEdit.svelte";
+	import FaTrashAlt from "svelte-icons/fa/FaTrashAlt.svelte";
 	import RenameModal from "./renameModal.svelte";
 	import DeleteModal from "./deleteModal.svelte";
 
@@ -14,28 +16,28 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div on:click={toggleShowMenu} class="w-6 "><MdMoreHoriz /></div>
-{#if showMenu}
-	<div
-		on:mouseleave={() => (showMenu = false)}
-		class="absolute bg-primary border-2 border-alt left-32 top-8 rounded-md text-center elevation-2"
-	>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			on:click={() => (showRenameModal = true)}
-			class="px-7 py-2 hover:bg-alt hover:rounded-t-md border-b-2 border-alt cursor-pointer"
-		>
-			Rename
+<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+<div
+	on:mouseenter={() => (showMenu = true)}
+	on:mouseleave={() => (showMenu = false)}
+>
+	{#if !showMenu}
+		<div on:click={toggleShowMenu} class="w-6">
+			<MdMoreHoriz />
 		</div>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div
-			on:click={() => (showDeleteModal = true)}
-			class="hover:bg-secondary hover:rounded-b-md text-red-600 px-7 py-2"
-		>
-			Delete
+	{/if}
+	{#if showMenu}
+		<div class="flex flex-row space-x-2 pr-1">
+			<div on:click={() => (showRenameModal = true)} class="w-5 ">
+				<FaRegEdit />
+			</div>
+			<div on:click={() => (showDeleteModal = true)} class="w-4 ">
+				<FaTrashAlt />
+			</div>
 		</div>
-	</div>
-{/if}
+	{/if}
+</div>
+
 <RenameModal
 	{listIndex}
 	showModal={showRenameModal}

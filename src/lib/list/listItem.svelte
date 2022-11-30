@@ -1,5 +1,6 @@
 <script>
 	import GoTrashcan from "svelte-icons/go/GoTrashcan.svelte";
+	import FaGripLines from "svelte-icons/fa/FaGripLines.svelte";
 	import { lists } from "../stores.js";
 
 	export let value;
@@ -42,7 +43,10 @@
 	${hoverIndex === taskIndex ? "bg-gray-500" : ""}`}
 	draggable="true"
 >
-	<div class="flex w-full cursor-pointer">
+	<div class="flex w-full cursor-pointer items-center">
+		<div class="w-3 text-slate-400 mr-2">
+			<FaGripLines />
+		</div>
 		<input
 			type="checkbox"
 			checked={isChecked}

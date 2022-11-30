@@ -1,11 +1,19 @@
 <script>
 	export let show = false;
+	export let hideModal;
 </script>
 
 {#if show}
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div
-		class="absolute z-10  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border-2 px-10 py-5"
+		class="absolute inset-0 h-full w-full flex backdrop-blur-sm z-20"
+		on:click|self={hideModal}
 	>
-		<slot />
+		<div
+			class=" bg-secondary-background 
+		rounded-md px-10 py-5 w-2/12 m-auto"
+		>
+			<slot />
+		</div>
 	</div>
 {/if}
