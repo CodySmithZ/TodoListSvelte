@@ -15,7 +15,7 @@
 	};
 </script>
 
-<div class="w-full py-2">
+<div class="py-2 flex">
 	<input
 		type="text"
 		bind:value={itemName}
@@ -26,7 +26,7 @@
 		on:click={addTask}
 		disabled={isValidText}
 		class={`
-		text-slate-300 bg-primary rounded-md pb-2 pt-2.5 w-[24.4%]
+		text-slate-300 bg-primary rounded-md pb-2 pt-2.5 w-[25%] ml-2
 		${
 			isValidText
 				? "opacity-50 cursor-not-allowed"

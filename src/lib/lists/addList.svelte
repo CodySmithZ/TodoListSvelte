@@ -12,26 +12,24 @@
 	};
 </script>
 
-<div class="w-full flex justify-between ">
-	<input
-		type="text"
-		bind:value={listName}
-		placeholder="Enter list name"
-		class="bg-secondary-background text-xl 
+<input
+	type="text"
+	bind:value={listName}
+	placeholder="Enter list name"
+	class="bg-secondary-background text-xl 
 	text-slate-400 font-thin rounded-bl-md 
-	pl-2 pb-3 pt-2 outline-none"
-	/>
-	<button disabled={isValidText} on:click={() => addList()} class=""
-		><div
-			class={` bg-primary rounded-full w-11
+	pl-2 pb-3 pt-2 outline-none w-3/4"
+/>
+<button disabled={isValidText} on:click={() => addList()} class=""
+	><div
+		class={` bg-primary rounded-full w-11
 		${
 			isValidText
 				? "opacity-50 cursor-not-allowed"
 				: "hover:bg-secondary active:bg-alt"
 		}
 		`}
-		>
-			<MdAdd />
-		</div></button
 	>
-</div>
+		<MdAdd />
+	</div></button
+>

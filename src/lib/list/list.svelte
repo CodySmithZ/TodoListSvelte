@@ -29,7 +29,7 @@
 		return false;
 	}}
 >
-	{#each list.task as item, i (item.id)}
+	{#each list.task as item, i (item)}
 		<div animate:flip>
 			<ListItem
 				value={item.value}
@@ -43,5 +43,4 @@
 			/>
 		</div>
 	{/each}
-	<AddItem {listIndex} />
 </div>
