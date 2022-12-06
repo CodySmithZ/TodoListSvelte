@@ -12,13 +12,13 @@
 	</div>
 
 	<div
-		class="flex flex-row xl:w-7/12 lg:w-9/12 md:w-9/12 sm:w-10/12 w-full m-auto"
+		class="flex flex-col sm:flex-row xl:w-7/12 lg:w-9/12 md:w-10/12 sm:w-11/12 px-5 sm:px-0 w-full m-auto space-y-10 sm:space-y-0"
 	>
-		<div class=" mr-5 ml-2 mt-2 flex flex-col w-3/12 sm:w-4/12 md:w-3/12">
+		<div
+			class=" sm:mr-5 sm:ml-2 sm:mt-2 flex flex-col  sm:w-4/12 md:w-4/12 "
+		>
 			<ListSelector />
-			<div class="flex justify-between">
-				<AddList />
-			</div>
+			<AddList />
 		</div>
 		{#each $lists as list, i}
 			{#if i === $selectedListIndex}

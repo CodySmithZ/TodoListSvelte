@@ -7,7 +7,7 @@
 	};
 </script>
 
-<div class="bg-secondary-background rounded-md flex flex-col">
+<div class="bg-secondary-background rounded-md flex flex-col ">
 	{#each $lists as list, i}
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
@@ -16,7 +16,7 @@
 		cursor-pointer flex flex-row 
 		justify-between px-1 text-slate-300 
 		text-xl border-b-4 border-background
-		py-2 items-center font-thin  truncate
+		py-2 items-center font-thin  w-full 
 		${i === $selectedListIndex ? "bg-secondary font-normal" : ""}
 		${i === 0 ? "rounded-t-lg" : ""}
 		`}
