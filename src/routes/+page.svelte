@@ -5,7 +5,7 @@
 	import AddList from "../lib/lists/addList.svelte";
 	import AddItem from "../lib/list/addItem.svelte";
 
-	// lists.useLocalStorage();
+	lists.useLocalStorage();
 </script>
 
 <div class="flex flex-col items-center">
