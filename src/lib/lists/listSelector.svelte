@@ -16,13 +16,15 @@
 		cursor-pointer flex flex-row 
 		justify-between px-1 text-slate-300 
 		text-xl border-b-4 border-background
-		py-2 items-center font-thin  w-full 
+		py-2 items-center font-thin  w-full
 		${i === $selectedListIndex ? "bg-secondary font-normal" : ""}
 		${i === 0 ? "rounded-t-lg" : ""}
 		`}
 			on:click={() => changeSelectedList(i)}
 		>
-			{list.name}
+			<div class="truncate">
+				{list.name}
+			</div>
 			<ListMenu listIndex={i} />
 		</div>
 	{/each}

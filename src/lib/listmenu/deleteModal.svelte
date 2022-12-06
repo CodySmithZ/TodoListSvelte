@@ -23,7 +23,7 @@
 
 <Modal show={showModal} {hideModal}>
 	<div class="flex flex-col">
-		<div class="text-center text-2xl mb-7">Delete {listName}?</div>
+		<div class="text-center text-2xl mb-7 truncate">Delete {listName}?</div>
 		<div class="flex flex-row justify-between">
 			<button
 				class="px-3 py-2 rounded-md bg-primary hover:bg-secondary active:bg-alt text-slate-400"
