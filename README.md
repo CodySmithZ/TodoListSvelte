@@ -12,7 +12,7 @@ A Simple todo list made with Svelte, to demonstrate my ability to learn another 
 
 ## Live
 
-This project can be tested here - [Countryle.CodySmith.me](http://countryle.codysmith.me/)
+This project can be tested here - [TodoList.CodySmith.me](http://todolist.codysmith.me/)
 
 ## Built With
 
