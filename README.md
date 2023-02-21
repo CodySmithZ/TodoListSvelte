@@ -5,7 +5,7 @@
   </a>
 </p>
 <p align="center">
-  <img src="TodolistWebpage.png?raw=true" alt="Project webpage"/>
+  <img src="todolist.png?raw=true" alt="Project webpage"/>
 </p>
 
 A Simple todo list made with Svelte, to demonstrate my ability to learn another framework for my personal portfolio.
